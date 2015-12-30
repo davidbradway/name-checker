@@ -75,7 +75,7 @@ def getInitials (x):
     p11 = re.compile('^[a-zA-Z]')
     xThirdInitialtemp = p11.match(xThirdName)
     xThirdInitial = xThirdInitialtemp.group()
-    print "ThirdInitial: " + xThirdInitial
+    print "ThirdInitial : " + xThirdInitial
 
     # Combine initlals
     initials = xFirstInitial + xSecondInitial + xThirdInitial    
