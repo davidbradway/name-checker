@@ -33,53 +33,34 @@ def getInitials (x):
     # Remove non alphabetic characters
     p3 = re.compile('[^a-zA-Z ]*')
     xAlphabetic = p3.sub('', xNoHyphen)
-    #print "Output: " + xAlphabetic
-    
+    print "Output: " + xAlphabetic
+
+    p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
+    m = p4.search(xAlphabetic)
     # Get first name
-    p4 = re.compile('[ ]+[a-zA-Z ]*')
-    xFirstName = p4.sub('', xAlphabetic)
-    print "FirstName : " + xFirstName
-
+    xFirstName =  m.group('firstName')
     # Get second name
-    # first, remove first name
-    p5 = re.compile('^[a-zA-Z]+[ ]+')
-    xNoFirstName = p5.sub('', xAlphabetic)
-    #print "NoFirst: " + xNoFirstName
-    # then, remove everything after what is now first remaining name
-    p6 = re.compile('^[ ]+')
-    xNoSpacesBeforeSecondName = p6.sub('', xNoFirstName)
-    #print "NoSpacesBeforeSecondName: " + xNoSpacesBeforeSecondName
-    p7 = re.compile('[ ]+[a-zA-Z]+')
-    xSecondName = p7.sub('', xNoSpacesBeforeSecondName)
-    print "SecondName: " + xSecondName
-    
+    xSecondName = m.group('secondName')    
     # Get third name
-    # remove what is now first remaining name
-    p8 = re.compile('[a-zA-Z]+[ ]+')
-    xThirdName = p8.sub('', xNoSpacesBeforeSecondName)
-    print "ThirdName : " + xThirdName
-
+    xThirdName = m.group('thirdName')
+    
     # Get first initial
-    p9 = re.compile('^[a-zA-Z]')
-    xFirstInitialtemp = p9.match(xFirstName)
-    xFirstInitial = xFirstInitialtemp.group()
-    print "FirstInitial : " + xFirstInitial
-
+    xFirstInitial = getInitialFromName(xFirstName)
     # Get second initial
-    p10 = re.compile('^[a-zA-Z]')
-    xSecondInitialtemp = p10.match(xSecondName)
-    xSecondInitial = xSecondInitialtemp.group()
-    print "SecondInitial: " + xSecondInitial
-
+    xSecondInitial = getInitialFromName(xSecondName)
     # Get third initial
-    p11 = re.compile('^[a-zA-Z]')
-    xThirdInitialtemp = p11.match(xThirdName)
-    xThirdInitial = xThirdInitialtemp.group()
-    print "ThirdInitial : " + xThirdInitial
+    xThirdInitial = getInitialFromName(xThirdName)
 
     # Combine initlals
     initials = xFirstInitial + xSecondInitial + xThirdInitial    
     return initials
+
+def getInitialFromName (name):
+    # Get initial
+    p = re.compile('^[a-zA-Z]')
+    initialTemp = p.match(name)
+    initial = initialTemp.group()
+    return initial
 
 if __name__ == '__main__':
     from optparse import OptionParser
@@ -105,11 +86,11 @@ if __name__ == '__main__':
     logging.basicConfig(level=log_levels[opts.verbose],
                         format='%(levelname)s: %(message)s')
     
-    i1 = getInitials("   Anne Black Cat")
-    print i1
-    i2 = getInitials("Anne9 Black Cat")
-    print i2
-    i3 = getInitials("Programming Hist-orian")
-    print i3
-    i4 = getInitials("   Anne      Black Cat")
-    print i4
+    intials1 = getInitials("   Anne Black Cat")
+    print intials1
+    intials2 = getInitials("Anne9 Black Cat")
+    print intials2
+    intials3 = getInitials("Programming Hist-orian")
+    print intials3
+    intials4 = getInitials("   Anne      Black Cat")
+    print intials4
