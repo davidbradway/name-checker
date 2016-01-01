@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 
 import re
 
-def getInitials (x):
+def getNames (x):
     print "Input : " + x
 
     # Force to uppercase
@@ -43,6 +43,11 @@ def getInitials (x):
     xSecondName = m.group('secondName')    
     # Get third name
     xThirdName = m.group('thirdName')
+
+    return xFirstName, xSecondName, xThirdName
+
+def getInitials (x):
+    xFirstName, xSecondName, xThirdName = getNames(x)
     
     # Get first initial
     xFirstInitial = getInitialFromName(xFirstName)
