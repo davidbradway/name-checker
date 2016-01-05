@@ -16,8 +16,10 @@ log = logging.getLogger(__name__)
 
 import re
 
+from string import ascii_uppercase
+
 def getNames (x):
-    print "Input : " + x
+    #print "Input : " + x
 
     # Force to uppercase
     x =  x.upper()
@@ -33,7 +35,7 @@ def getNames (x):
     # Remove non alphabetic characters
     p3 = re.compile('[^a-zA-Z ]*')
     xAlphabetic = p3.sub('', xNoHyphen)
-    print "Output: " + xAlphabetic
+    #print "Output: " + xAlphabetic
 
     p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
     m = p4.search(xAlphabetic)
