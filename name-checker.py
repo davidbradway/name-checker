@@ -87,6 +87,16 @@ def getInitialFromName (name):
     initial = initialTemp.group()
     return initial
 
+def getEmailPattern1 (x):
+    firstName, secondName, thirdName = getNames(x)
+    initials = getInitials(x)
+    return initials[0:1]+thirdName+"@company.com"
+
+def getEmailPattern2 (x):
+    firstName, secondName, thirdName = getNames(x)
+    initials = getInitials(x)
+    return thirdName+initials[0:1]+"@company.com"
+
 if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(version="%%prog v%s" % __version__,
