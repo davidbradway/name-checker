@@ -18,6 +18,9 @@ import re
 
 from string import ascii_uppercase
 
+import names
+bad = names.badNames()
+
 def getNames (x):
     #print "Input : " + x
 
@@ -124,25 +127,75 @@ if __name__ == '__main__':
     in1 = "   Henrietta Inga Vance"
     print in1
     initials1 = getInitials(in1)
-    print initials1
-
+    #print initials1
+    if initials1 in bad:
+        print "bad: " + initials1 + bad[initials1]
+    
     in2 = "Francine9 Anne Smith"
     print in2
     initials2 = getInitials(in2)
-    print initials2    
+    #print initials2    
+    if initials2 in bad:
+        print "bad: " + initials2 + bad[initials2]
+    initials2_married = getListOfConventionalMarriageNames(initials2);
+    for initial in initials2_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+
+    initials2_hyphen = getListOfHyphenatedMarriageNames(initials2);
+    for initial in initials2_hyphen:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
     
+    initials2_married = getListOfRemovedMiddleShiftedMarriageNames(initials2);
+    for initial in initials2_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+            
     in3 = "Frank Germane Arts"
     print in3
     print getEmailPattern1(in3)
     print getEmailPattern2(in3)
     initials3 = getInitials(in3)
-    print initials3
+    #print initials3
+    if initials3 in bad:
+        print "bad: " + initials3 + bad[initials3]
+    initials3_married = getListOfConventionalMarriageNames(initials3);
+    for initial in initials3_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
 
+    initials3_hyphen = getListOfHyphenatedMarriageNames(initials3);
+    for initial in initials3_hyphen:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+    
+    initials3_married = getListOfRemovedMiddleShiftedMarriageNames(initials3);
+    for initial in initials3_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+    
     in4 = "   Brandy      Anderson-Damon"
     print in4
     initials4 = getInitials(in4)
-    print initials4
-    print getListOfConventionalMarriageNames(initials4)
-    print getListOfHyphenatedMarriageNames(initials4)
-    print getListOfRemovedMiddleShiftedMarriageNames(initials4)
+    #print initials4
+    #print getListOfConventionalMarriageNames(initials4)
+    #print getListOfHyphenatedMarriageNames(initials4)
+    #print getListOfRemovedMiddleShiftedMarriageNames(initials4)
+    if initials4 in bad:
+        print "bad: " + initials4 + bad[initials4]
+    initials4_married = getListOfConventionalMarriageNames(initials4);
+    for initial in initials4_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+
+    initials4_hyphen = getListOfHyphenatedMarriageNames(initials4);
+    for initial in initials4_hyphen:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
+    
+    initials4_married = getListOfRemovedMiddleShiftedMarriageNames(initials4);
+    for initial in initials4_married:
+        if initial in bad:
+            print "bad: " + initial + bad[initial]
     
