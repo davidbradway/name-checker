@@ -121,11 +121,28 @@ if __name__ == '__main__':
     logging.basicConfig(level=log_levels[opts.verbose],
                         format='%(levelname)s: %(message)s')
     
-    intials1 = getInitials("   Anne Black Cat")
-    print intials1
-    intials2 = getInitials("Anne9 Black Cat")
-    print intials2
-    intials3 = getInitials("Programming Hist-orian")
-    print intials3
-    intials4 = getInitials("   Anne      Black Cat")
-    print intials4
+    in1 = "   Henrietta Inga Vance"
+    print in1
+    initials1 = getInitials(in1)
+    print initials1
+
+    in2 = "Francine9 Anne Smith"
+    print in2
+    initials2 = getInitials(in2)
+    print initials2    
+    
+    in3 = "Frank Germane Arts"
+    print in3
+    print getEmailPattern1(in3)
+    print getEmailPattern2(in3)
+    initials3 = getInitials(in3)
+    print initials3
+
+    in4 = "   Brandy      Anderson-Damon"
+    print in4
+    initials4 = getInitials(in4)
+    print initials4
+    print getListOfConventionalMarriageNames(initials4)
+    print getListOfHyphenatedMarriageNames(initials4)
+    print getListOfRemovedMiddleShiftedMarriageNames(initials4)
+    
