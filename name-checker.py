@@ -62,6 +62,24 @@ def getInitials (x):
     initials = xFirstInitial + xSecondInitial + xThirdInitial    
     return initials
 
+def getListOfConventionalMarriageNames (initials):
+    nameList = []
+    for c in ascii_uppercase:
+        nameList.append(initials[:-1] + c)
+    return nameList
+    
+def getListOfHyphenatedMarriageNames (initials):
+    nameList = []
+    for c in ascii_uppercase:
+        nameList.append(initials + c)
+    return nameList
+    
+def getListOfRemovedMiddleShiftedMarriageNames (initials):
+    nameList = []
+    for c in ascii_uppercase:
+        nameList.append(initials[0:1] + initials[-1:] + c)
+    return nameList
+
 def getInitialFromName (name):
     # Get initial
     p = re.compile('^[a-zA-Z]')
