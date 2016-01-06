@@ -1,4 +1,4 @@
-$def with (greeting)
+$def with (namevalue)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,22 +64,20 @@ $def with (greeting)
       <div class="starter-template">
         <h1>Unintended Consequences Name Checker</h1>
         <p class="lead">Enter a potential baby name below to see problematic possible initials and email addresses.</p>
-        <p>
-        $if greeting:
-            I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.
-        $else:
-            <em>Hello</em>, world!
-        </p>
-        <form class="form-signin">
+        <form class="form-signin"  action="/" method="POST">
           <label for="inputName" class="sr-only">Name</label>
-          <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
+          $if namevalue:
+              <input type="text" name="name" id="inputName" class="form-control" placeholder="$namevalue" required autofocus>
+          $else:
+              <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+
           <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
         </form>
       </div>
 
-
+    $if namevalue:
       <div class="page-header">
-        <h1>Results</h1>
+        <h1>Results for $namevalue</h1>
       </div>
       <div class="row">
         <table class="table table-striped">
@@ -93,8 +91,9 @@ $def with (greeting)
           <tbody>
             <tr>
               <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
+              <td> A
+              </td>
+              <td>Def'n</td>
             </tr>
             <tr>
               <td>2</td>
@@ -109,6 +108,9 @@ $def with (greeting)
           </tbody>
         </table>
       </div>
+    $else:
+        &nbsp;
+
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
