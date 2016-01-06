@@ -5,4 +5,4 @@ or if that name could become a problem upon a marriage name change.
 
 ## Reference
 
-(http://learnpythonthehardway.org/book/ex51.html)
+[Learn Python the Hard Way tutorials](http://learnpythonthehardway.org/book/ex51.html)
