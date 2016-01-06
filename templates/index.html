@@ -1,3 +1,5 @@
+$def with (greeting)
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -62,7 +64,12 @@
       <div class="starter-template">
         <h1>Unintended Consequences Name Checker</h1>
         <p class="lead">Enter a potential baby name below to see problematic possible initials and email addresses.</p>
-
+        <p>
+        $if greeting:
+            I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.
+        $else:
+            <em>Hello</em>, world!
+        </p>
         <form class="form-signin">
           <label for="inputName" class="sr-only">Name</label>
           <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
