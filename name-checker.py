@@ -165,7 +165,6 @@ if __name__ == '__main__':
     in3 = "Frank Germane Arts"
     print in3
     print getEmailPattern1(in3)
-    print getEmailPattern2(in3)
     initials3 = getInitials(in3)
     #print initials3
     if initials3 in bad:
@@ -208,4 +207,9 @@ if __name__ == '__main__':
     for initial in initials4_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
+    
+    in5 = "Ishmael Naz"
+    print in5
+    firstName, secondName, thirdName = getNames(in5)
+    print getEmailPattern2(in5)
     
