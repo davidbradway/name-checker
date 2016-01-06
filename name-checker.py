@@ -40,12 +40,19 @@ def getNames (x):
     xAlphabetic = p3.sub('', xNoHyphen)
     #print "Output: " + xAlphabetic
 
-    p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
+    p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w*\b)')
     m = p4.search(xAlphabetic)
+    if m == None:
+        #print "matched None, try with no middle name"
+        p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
+        m = p4.search(xAlphabetic)
+        # set second name
+        xSecondName = None
+    else:
+        # Get second name
+        xSecondName = m.group('secondName')    
     # Get first name
     xFirstName =  m.group('firstName')
-    # Get second name
-    xSecondName = m.group('secondName')    
     # Get third name
     xThirdName = m.group('thirdName')
 
@@ -85,9 +92,12 @@ def getListOfRemovedMiddleShiftedMarriageNames (initials):
 
 def getInitialFromName (name):
     # Get initial
-    p = re.compile('^[a-zA-Z]')
-    initialTemp = p.match(name)
-    initial = initialTemp.group()
+    if name == None:
+        initial = ''
+    else:
+        p = re.compile('^[a-zA-Z]')
+        initialTemp = p.match(name)
+        initial = initialTemp.group()
     return initial
 
 def getEmailPattern1 (x):
