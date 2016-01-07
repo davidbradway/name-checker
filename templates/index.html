@@ -8,7 +8,7 @@ $def with (namevalue, dict)
         <form class="form-signin"  action="/" method="POST">
           <label for="inputName" class="sr-only">Name</label>
           $if namevalue:
-              <input type="text" name="name" id="inputName" class="form-control" placeholder="$namevalue" required autofocus>
+              <input type="text" name="name" id="inputName" class="form-control" value="$namevalue" required autofocus>
           $else:
               <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
 
