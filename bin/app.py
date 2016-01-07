@@ -104,12 +104,28 @@ def getInitialFromName (name):
 def getEmailPattern1 (x):
     firstName, secondName, thirdName = getNames(x)
     initials = getInitials(x)
-    return initials[0:1]+thirdName+"@company.com"
+    return initials[0:1].lower()+thirdName.lower()+"@company.com"
 
 def getEmailPattern2 (x):
     firstName, secondName, thirdName = getNames(x)
     initials = getInitials(x)
-    return thirdName+initials[0:1]+"@company.com"
+    return thirdName.lower()+initials[0:1].lower()+"@company.com"
+
+def getEmailPattern3 (x):
+    firstName, secondName, thirdName = getNames(x)
+    initials = getInitials(x)
+    if secondName:
+        return initials[0:2].lower()+thirdName.lower()+"@company.com"
+    else:
+        return ''
+
+def getEmailPattern4 (x):
+    firstName, secondName, thirdName = getNames(x)
+    initials = getInitials(x)
+    if secondName:
+        return thirdName.lower()+initials[0:2].lower()+"@company.com"
+    else:
+        return ''
 
 class Index(object):
     def GET(self):
@@ -144,6 +160,14 @@ class Index(object):
 
         dict1[getEmailPattern1(nameString)]='This could be a default email address.'
         dict1[getEmailPattern2(nameString)]='This could be a default email address.'
+        
+        temp = getEmailPattern3(nameString)
+        if temp != "":
+            dict1[temp]='This could be a default email address.'
+        
+        temp = getEmailPattern4(nameString)
+        if temp != "":
+            dict1[temp]='This could be a default email address.'
         
         return render.index(namevalue = nameString, dict = dict1)
 
