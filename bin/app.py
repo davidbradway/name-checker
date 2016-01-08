@@ -155,8 +155,8 @@ class Index(object):
             if initial in bad:
                 dict1[initial] = 'If he/she marries and takes new surname.'
 
-        if initials in bad:
-            dict1[initials] = 'These are the given initials.'
+        # Always show the given initials        
+        dict1[initials] = 'These are the given initials.'
 
         dict1[getEmailPattern1(nameString)]='This could be a default email address.'
         dict1[getEmailPattern2(nameString)]='This could be a default email address.'
