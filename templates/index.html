@@ -26,6 +26,7 @@ $def with (namevalue, dict)
             <tr>
               <th>#</th>
               <th>Initials/Email</th>
+              <th>Definition</th>
               <th>How?</th>
             </tr>
           </thead>
@@ -34,7 +35,8 @@ $def with (namevalue, dict)
             <tr>
               <td>$loop.index</td>
               <td>$key</td>
-              <td>$value</td>
+              <td>$value[0]</td>
+              <td>$value[1]</td>
             </tr>
           </tbody>
         </table>
