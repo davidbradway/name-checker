@@ -73,6 +73,12 @@ def getInitials (x):
     initials = xFirstInitial + xSecondInitial + xThirdInitial    
     return initials
 
+def getMonogram (initials):
+    if len(initials) == 3:
+        return initials[0]+initials[2]+initials[1]
+    else:
+        return None
+        
 def getListOfConventionalMarriageNames (initials):
     nameList = []
     for c in ascii_uppercase:
