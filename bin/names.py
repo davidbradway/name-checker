@@ -120,6 +120,7 @@ def badNames():    # return dictionary
             'BAR':'',
             'BAS':'',
             'BAT':'',
+            'BAE':'best fried, babe, before all else',
             'BAY':'',
             'BBC':'British Broadcasting Commission',
             'BC':'because',

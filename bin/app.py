@@ -74,6 +74,7 @@ def getInitials (x):
     return initials
 
 def getMonogram (initials):
+    # Need three initials for a monogram to make sense
     if len(initials) == 3:
         return initials[0]+initials[2]+initials[1]
     else:
@@ -81,22 +82,32 @@ def getMonogram (initials):
         
 def getListOfConventionalMarriageNames (initials):
     nameList = []
+    # Go through all the letters of the alphabet
     for c in ascii_uppercase:
+        # Replace old last name initial  with the new married name initial 
         nameList.append(initials[:-1] + c)
     return nameList
     
 def getListOfHyphenatedMarriageNames (initials):
     nameList = []
+    # Go through all the letters of the alphabet
     for c in ascii_uppercase:
+        # Append new married name initial to existing initials
         nameList.append(initials + c)
     return nameList
     
 def getListOfRemovedMiddleShiftedMarriageNames (initials):
     nameList = []
-    for c in ascii_uppercase:
-        nameList.append(initials[0:1] + initials[-1:] + c)
-    return nameList
-
+    # this function only works with three names
+    if len(initials) == 3:
+        # Go through all the letters of the alphabet
+        for c in ascii_uppercase:
+            # Append new married name initial and remove old middle name
+            nameList.append(initials[0:1] + initials[-1:] + c)
+        return nameList
+    else:
+        return None
+        
 def getInitialFromName (name):
     # Get initial
     if name == None:
@@ -167,7 +178,7 @@ class Index(object):
         else:
             dict1[initials]=['','These are the given initials.']
 
-        # Always show the given monogram
+        # Show the given monogram if a valid one is returned (need three initials)
         temp = getMonogram(initials)
         if temp != "":
             if temp in bad:
