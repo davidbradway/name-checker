@@ -2,7 +2,7 @@
 """
 Created on Tue Jan 05 20:52:29 2016
 
-pip install lpthw.web
+pip install web.py
 
 @author: David
 """
