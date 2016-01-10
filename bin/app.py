@@ -151,32 +151,42 @@ class Index(object):
 
         for initial in initials_married1:
             if initial in bad:
-                dict1.setdefault(initial,[bad[initial]]).append('If he/she marries, drops middle name, and adds married name.')
+                dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.']
+
         for initial in initials_hyphen:
             if initial in bad:
-                dict1.setdefault(initial,[bad[initial]]).append('If he/she marries and hyphenates married name.')
+                dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.']
         
         for initial in initials_married:
             if initial in bad:
-                dict1.setdefault(initial,[bad[initial]]).append('If he/she marries and takes new surname.')
+                dict1[initial]=[bad[initial],'If he/she marries and takes new surname.']
 
         # Always show the given initials        
         if initials in bad:
-            dict1.setdefault(initials,[bad[initials]]).append('These are the given initials.')
+            dict1[initials]=[bad[initials],'These are the given initials.']
         else:
-            dict1.setdefault(initials,['']).append('These are the given initials.')
+            dict1[initials]=['','These are the given initials.']
 
-        dict1.setdefault(getEmailPattern1(nameString),['']).append('This could be a default email address.')
+        # Always show the given monogram
+        temp = getMonogram(initials)
+        if temp != "":
+            if temp in bad:
+                dict1[temp]=[bad[temp],'This is the monogram for the given name.']
+            else:
+                dict1[temp]=['','This is the monogram for the given name']
+
+        # Always show 2 to 4 possible email addresses
+        dict1[getEmailPattern1(nameString)]=['','This could be a default email address.']
         
-        dict1.setdefault(getEmailPattern2(nameString),['']).append('This could be a default email address.')
+        dict1[getEmailPattern2(nameString)]=['','This could be a default email address.']
         
         temp = getEmailPattern3(nameString)
         if temp != "":
-            dict1.setdefault(temp,['']).append('This could be a default email address.')
+            dict1[temp]=['','This could be a default email address.']
         
         temp = getEmailPattern4(nameString)
         if temp != "":
-            dict1.setdefault(temp,['']).append('This could be a default email address.')
+            dict1[temp]=['','This could be a default email address.']
         
         return render.index(namevalue = nameString, dict = dict1)
 
