@@ -14,5 +14,5 @@ echo " "
 
 
 echo "Run a script every minute to check if the processes needs respawned"
-(sudo crontab -l ; echo "* * * * * /home/bitnami/name-checker/autorestart.sh")| sudo crontab -
+(crontab -l ; echo "* * * * * /home/bitnami/name-checker/autorestart.sh")| crontab -
 
