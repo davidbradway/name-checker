@@ -9,8 +9,13 @@ $def with (namevalue, dict)
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Name Checker</a>
+          $if namevalue:
+              <form class="navbar-form navbar-right form-signin"  action="/" method="POST">
+                <input type="text" name="name" id="inputName" class="form-control" value="$namevalue" required autofocus>
+              </form>
+
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Links <span class="caret"></span></a>
@@ -20,29 +25,30 @@ $def with (namevalue, dict)
                 <li><a href="http://goo.gl/forms/AMJrwEXM4v" target="_blank">Add missing initials</a></li>
               </ul>
             </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+          </ul>            
+        </div><!--/.navbar-collapse -->        
       </div>
     </nav>
 
     <div class="container">
-      <div class="starter-template">
-        <h1>Unintended Consequences Name Checker</h1>
-        <p class="lead">Enter a potential baby name below to see problematic possible initials and email addresses.</p>
-        <form class="form-signin"  action="/" method="POST">
-          <label for="inputName" class="sr-only">Name</label>
-          $if namevalue:
-              <input type="text" name="name" id="inputName" class="form-control" value="$namevalue" required autofocus>
-          $else:
-              <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+    $if namevalue:
+        $pass
+    $else:
+        <div class="starter-template">
+          <h1>Unintended Consequences Name Checker</h1>
+          <p class="lead">Enter a potential baby name below to see problematic possible initials and email addresses.</p>
+          <form class="form-signin"  action="/" method="POST">
+            <label for="inputName" class="sr-only">Name</label>
+            $if namevalue:
+                <input type="text" name="name" id="inputName" class="form-control" value="$namevalue" required autofocus>
+            $else:
+                <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
 
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
-        </form>
-      </div>
-
+            <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button> -->
+          </form>
+        </div>
     $if dict:
       <div class="page-header">
-        <h1>Results for "$namevalue"</h1>
       </div>
       <div class="row">
         <table class="table table-striped">
