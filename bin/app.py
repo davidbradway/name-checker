@@ -21,7 +21,6 @@ app = web.application(urls, globals())
 
 render = web.template.render('templates/', base="layout")
 
-
 def getNames (x):
     #print "Input : " + x
 
@@ -59,9 +58,7 @@ def getNames (x):
 
     return xFirstName, xSecondName, xThirdName
 
-def getInitials (x):
-    xFirstName, xSecondName, xThirdName = getNames(x)
-    
+def getInitials (xFirstName, xSecondName, xThirdName):
     # Get first initial
     xFirstInitial = getInitialFromName(xFirstName)
     # Get second initial
@@ -118,27 +115,19 @@ def getInitialFromName (name):
         initial = initialTemp.group()
     return initial
 
-def getEmailPattern1 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
+def getEmailPattern1 (firstName, secondName, thirdName, initials):
     return initials[0:1].lower()+thirdName.lower()+"@company.com"
 
-def getEmailPattern2 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
+def getEmailPattern2 (firstName, secondName, thirdName, initials):
     return thirdName.lower()+initials[0:1].lower()+"@company.com"
 
-def getEmailPattern3 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
+def getEmailPattern3 (firstName, secondName, thirdName, initials):
     if secondName:
         return initials[0:2].lower()+thirdName.lower()+"@company.com"
     else:
         return ''
 
-def getEmailPattern4 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
+def getEmailPattern4 (firstName, secondName, thirdName, initials):
     if secondName:
         return thirdName.lower()+initials[0:2].lower()+"@company.com"
     else:
@@ -154,15 +143,20 @@ class Index(object):
         dict1 = {}
 
         nameString = "%s" % (form.name)
+
+        # Parse the input string and return the two or three names (Second name could be 'None;)
+        xFirstName, xSecondName, xThirdName = getNames(nameString)
         
-        initials = getInitials(nameString)
+        initials = getInitials(xFirstName, xSecondName, xThirdName)
+        
         initials_married1 = getListOfRemovedMiddleShiftedMarriageNames(initials)
         initials_hyphen = getListOfHyphenatedMarriageNames(initials)
         initials_married = getListOfConventionalMarriageNames(initials)
 
-        for initial in initials_married1:
-            if initial in bad:
-                dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.']
+        if initials_married1 != None:
+            for initial in initials_married1:
+                if initial in bad:
+                    dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.']
 
         for initial in initials_hyphen:
             if initial in bad:
@@ -180,22 +174,22 @@ class Index(object):
 
         # Show the given monogram if a valid one is returned (need three initials)
         temp = getMonogram(initials)
-        if temp != "":
+        if temp != None:
             if temp in bad:
                 dict1[temp]=[bad[temp],'This is the monogram for the given name.']
             else:
                 dict1[temp]=['','This is the monogram for the given name']
 
         # Always show 2 to 4 possible email addresses
-        dict1[getEmailPattern1(nameString)]=['','This could be a default email address.']
+        dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
         
-        dict1[getEmailPattern2(nameString)]=['','This could be a default email address.']
+        dict1[getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
         
-        temp = getEmailPattern3(nameString)
+        temp = getEmailPattern3(xFirstName, xSecondName, xThirdName, initials)
         if temp != "":
             dict1[temp]=['','This could be a default email address.']
         
-        temp = getEmailPattern4(nameString)
+        temp = getEmailPattern4(xFirstName, xSecondName, xThirdName, initials)
         if temp != "":
             dict1[temp]=['','This could be a default email address.']
         
