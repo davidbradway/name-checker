@@ -24,9 +24,6 @@ render = web.template.render('templates/', base="layout")
 def getNames (x):
     #print "Input : " + x
 
-    # Force to uppercase
-    x =  x.upper()
-
     # Remove leading whitespace
     p = re.compile('^[^a-zA-Z]*')
     xNoLeadingWhitespace = p.sub('', x)
@@ -111,9 +108,12 @@ def getInitialFromName (name):
         initial = ''
     else:
         p = re.compile('^[a-zA-Z]')
-        initialTemp = p.match(name)
+        initialTemp = p.match(name.upper())
         initial = initialTemp.group()
     return initial
+
+def getNamePattern1 (firstName, thirdName):
+    return thirdName+", "+firstName
 
 def getEmailPattern1 (firstName, secondName, thirdName, initials):
     return initials[0:1].lower()+thirdName.lower()+"@company.com"
@@ -188,6 +188,8 @@ class Index(object):
                 dict1[temp]=[bad[temp],'This is the monogram for the given name.']
             else:
                 dict1[temp]=['','This is the monogram for the given name']
+
+        dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.']
 
         # Always show 2 to 4 possible email addresses
         dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
