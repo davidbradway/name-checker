@@ -133,6 +133,15 @@ def getEmailPattern4 (firstName, secondName, thirdName, initials):
     else:
         return ''
 
+def getEmailPattern5 (firstName, secondName, thirdName, initials):
+    return firstName[0:2].lower() + thirdName[0:3].lower()+"@company.com"
+
+def getEmailPattern6 (firstName, secondName, thirdName, initials):
+    return firstName[0:2].lower() + thirdName.lower()+"@company.com"
+
+def getEmailPattern7 (firstName, secondName, thirdName, initials):
+    return thirdName.lower()+firstName[0:2].lower()+"@company.com"
+
 class Index(object):
     def GET(self):
         return render.index(namevalue = '', dict ='')
@@ -192,7 +201,13 @@ class Index(object):
         temp = getEmailPattern4(xFirstName, xSecondName, xThirdName, initials)
         if temp != "":
             dict1[temp]=['','This could be a default email address.']
-        
+
+        dict1[getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+
+        dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+
+        dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+
         return render.index(namevalue = nameString, dict = dict1)
 
 if __name__ == "__main__":
