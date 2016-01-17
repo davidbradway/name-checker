@@ -37,10 +37,13 @@ def getNames (x):
     xAlphabetic = p3.sub('', xNoHyphen)
     #print "Output: " + xAlphabetic
 
+    # Create Regular Expression to look for a three-name pattern
     p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w*\b)')
     m = p4.search(xAlphabetic)
+    # If a three-name pattern is not matched:
     if m == None:
         #print "matched None, try with no middle name"
+        # Create Regular Expression to look for a two-name pattern
         p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
         m = p4.search(xAlphabetic)
         # set second name
@@ -68,6 +71,7 @@ def getInitials (xFirstName, xSecondName, xThirdName):
     return initials
 
 def getInitials2 (initials):
+    # If a three-name pattern was used, also show just First and Last initials
     if len(initials) == 3:
         return initials[0] + initials[2]
     else:
@@ -86,6 +90,7 @@ def getListOfConventionalMarriageNames (initials):
     for c in ascii_uppercase:
         # Replace old last name initial  with the new married name initial 
         nameList.append(initials[:-1] + c)
+    # If a three-name pattern was used, also show just First initial plus married initial
     if len(initials) == 3:
         for c in ascii_uppercase:
             # Replace old last name initial  with the new married name initial 
@@ -98,6 +103,7 @@ def getListOfHyphenatedMarriageNames (initials):
     for c in ascii_uppercase:
         # Append new married name initial to existing initials
         nameList.append(initials + c)
+    # This is actually redundant with the Conventional Marriage case above. should delete.
     if len(initials) == 3:
         for c in ascii_uppercase:
             # Replace old last name initial  with the new married name initial 
@@ -107,6 +113,7 @@ def getListOfHyphenatedMarriageNames (initials):
 def getListOfRemovedMiddleShiftedMarriageNames (initials):
     nameList = []
     # this function only works with three names
+    # If a three-name pattern was used, show First initial plus maiden initial, plus new married initial
     if len(initials) == 3:
         # Go through all the letters of the alphabet
         for c in ascii_uppercase:
@@ -127,6 +134,7 @@ def getInitialFromName (name):
     return initial
 
 def getNamePattern1 (firstName, thirdName):
+    # Show Last name, First name
     return thirdName+", "+firstName
 
 def getEmailPattern1 (firstName, secondName, thirdName, initials):
