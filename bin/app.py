@@ -86,6 +86,10 @@ def getListOfConventionalMarriageNames (initials):
     for c in ascii_uppercase:
         # Replace old last name initial  with the new married name initial 
         nameList.append(initials[:-1] + c)
+    if len(initials) == 3:
+        for c in ascii_uppercase:
+            # Replace old last name initial  with the new married name initial 
+            nameList.append(initials[0] + c)
     return nameList
     
 def getListOfHyphenatedMarriageNames (initials):
@@ -94,6 +98,10 @@ def getListOfHyphenatedMarriageNames (initials):
     for c in ascii_uppercase:
         # Append new married name initial to existing initials
         nameList.append(initials + c)
+    if len(initials) == 3:
+        for c in ascii_uppercase:
+            # Replace old last name initial  with the new married name initial 
+            nameList.append(initials[0] + c)
     return nameList
     
 def getListOfRemovedMiddleShiftedMarriageNames (initials):
@@ -186,6 +194,14 @@ class Index(object):
             dict1[initials]=[bad[initials],'These are the given initials.']
         else:
             dict1[initials]=['','These are the given initials.']
+
+        # Show the given first and last initials if three names were given
+        temp = getInitials2(initials)
+        if temp != None:
+            if temp in bad:
+                dict1[temp]=[bad[temp],'These are the given initials.']
+            else:
+                dict1[temp]=['','These are the given initials.']
 
         # Show the given monogram if a valid one is returned (need three initials)
         temp = getMonogram(initials)
