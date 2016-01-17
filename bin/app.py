@@ -67,6 +67,12 @@ def getInitials (xFirstName, xSecondName, xThirdName):
     initials = xFirstInitial + xSecondInitial + xThirdInitial    
     return initials
 
+def getInitials2 (initials):
+    if len(initials) == 3:
+        return initials[0] + initials[2]
+    else:
+        return None
+
 def getMonogram (initials):
     # Need three initials for a monogram to make sense
     if len(initials) == 3:
