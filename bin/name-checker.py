@@ -5,211 +5,159 @@ Created on Mon Dec 28 21:11:43 2015
 
 @author: David Bradway
 """
-
 __appname__ = "name-checker"
 __author__  = "David Bradway (dpb6 @ duke)"
 __version__ = "0.0pre0"
 __license__ = "GNU GPL 3.0 or later"
 
-import logging
-log = logging.getLogger(__name__)
-
 import re
-
 from string import ascii_uppercase
-
 import names
 bad = names.badNames()
+import app
 
-def getNames (x):
-    #print "Input : " + x
-
-    # Force to uppercase
-    x =  x.upper()
-
-    # Remove leading whitespace
-    p = re.compile('^[^a-zA-Z]*')
-    xNoLeadingWhitespace = p.sub('', x)
-        
-    # Replace hyphens with spaces
-    p2 = re.compile('[-]+')
-    xNoHyphen = p2.sub(' ', xNoLeadingWhitespace)
-    
-    # Remove non alphabetic characters
-    p3 = re.compile('[^a-zA-Z ]*')
-    xAlphabetic = p3.sub('', xNoHyphen)
-    #print "Output: " + xAlphabetic
-
-    p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<secondName>\b\w+\b)\s+(?P<thirdName>\b\w*\b)')
-    m = p4.search(xAlphabetic)
-    if m == None:
-        #print "matched None, try with no middle name"
-        p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
-        m = p4.search(xAlphabetic)
-        # set second name
-        xSecondName = None
-    else:
-        # Get second name
-        xSecondName = m.group('secondName')    
-    # Get first name
-    xFirstName =  m.group('firstName')
-    # Get third name
-    xThirdName = m.group('thirdName')
-
-    return xFirstName, xSecondName, xThirdName
-
-def getInitials (x):
-    xFirstName, xSecondName, xThirdName = getNames(x)
-    
-    # Get first initial
-    xFirstInitial = getInitialFromName(xFirstName)
-    # Get second initial
-    xSecondInitial = getInitialFromName(xSecondName)
-    # Get third initial
-    xThirdInitial = getInitialFromName(xThirdName)
-
-    # Combine initlals
-    initials = xFirstInitial + xSecondInitial + xThirdInitial    
-    return initials
-
-def getListOfConventionalMarriageNames (initials):
-    nameList = []
-    for c in ascii_uppercase:
-        nameList.append(initials[:-1] + c)
-    return nameList
-    
-def getListOfHyphenatedMarriageNames (initials):
-    nameList = []
-    for c in ascii_uppercase:
-        nameList.append(initials + c)
-    return nameList
-    
-def getListOfRemovedMiddleShiftedMarriageNames (initials):
-    nameList = []
-    for c in ascii_uppercase:
-        nameList.append(initials[0:1] + initials[-1:] + c)
-    return nameList
-
-def getInitialFromName (name):
-    # Get initial
-    if name == None:
-        initial = ''
-    else:
-        p = re.compile('^[a-zA-Z]')
-        initialTemp = p.match(name)
-        initial = initialTemp.group()
-    return initial
-
-def getEmailPattern1 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
-    return initials[0:1]+thirdName+"@company.com"
-
-def getEmailPattern2 (x):
-    firstName, secondName, thirdName = getNames(x)
-    initials = getInitials(x)
-    return thirdName+initials[0:1]+"@company.com"
 
 if __name__ == '__main__':
-    from optparse import OptionParser
-    parser = OptionParser(version="%%prog v%s" % __version__,
-            usage="%prog [options] <argument> ...",
-            description=__doc__.replace('\r\n', '\n').split('\n--snip--\n')[0])
-    parser.add_option('-v', '--verbose', action="count", dest="verbose",
-        default=2, help="Increase the verbosity. Use twice for extra effect")
-    parser.add_option('-q', '--quiet', action="count", dest="quiet",
-        default=0, help="Decrease the verbosity. Use twice for extra effect")
-    #Reminder: %default can be used in help strings.
 
-    # Allow pre-formatted descriptions
-    parser.formatter.format_description = lambda description: description
-
-    opts, args  = parser.parse_args()
-
-    # Set up clean logging to stderr
-    log_levels = [logging.CRITICAL, logging.ERROR, logging.WARNING,
-                  logging.INFO, logging.DEBUG]
-    opts.verbose = min(opts.verbose - opts.quiet, len(log_levels) - 1)
-    opts.verbose = max(opts.verbose, 0)
-    logging.basicConfig(level=log_levels[opts.verbose],
-                        format='%(levelname)s: %(message)s')
-    
     in1 = "   Henrietta Inga Vance"
     print in1
-    initials1 = getInitials(in1)
+    xFirstName, xSecondName, xThirdName = app.getNames(in1) 
+    initials1 = app.getInitials(xFirstName, xSecondName, xThirdName)
+    initials_married1 = app.getListOfRemovedMiddleShiftedMarriageNames(initials1)
+
     #print initials1
     if initials1 in bad:
         print "bad: " + initials1 + bad[initials1]
-    
+
+    """
     in2 = "Francine9 Anne Smith"
     print in2
-    initials2 = getInitials(in2)
+    initials2 = app.getInitials(in2)
     #print initials2    
     if initials2 in bad:
         print "bad: " + initials2 + bad[initials2]
-    initials2_married = getListOfConventionalMarriageNames(initials2);
+    initials2_married = app.getListOfConventionalMarriageNames(initials2);
     for initial in initials2_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
 
-    initials2_hyphen = getListOfHyphenatedMarriageNames(initials2);
+    initials2_hyphen = app.getListOfHyphenatedMarriageNames(initials2);
     for initial in initials2_hyphen:
         if initial in bad:
             print "bad: " + initial + bad[initial]
     
-    initials2_married = getListOfRemovedMiddleShiftedMarriageNames(initials2);
+    initials2_married = app.getListOfRemovedMiddleShiftedMarriageNames(initials2);
     for initial in initials2_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
             
     in3 = "Frank Germane Arts"
     print in3
-    print getEmailPattern1(in3)
-    initials3 = getInitials(in3)
+    print app.getEmailPattern1(in3)
+
+    initials3 = app.getInitials(in3)
     #print initials3
     if initials3 in bad:
         print "bad: " + initials3 + bad[initials3]
-    initials3_married = getListOfConventionalMarriageNames(initials3);
+    initials3_married = app.getListOfConventionalMarriageNames(initials3);
     for initial in initials3_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
 
-    initials3_hyphen = getListOfHyphenatedMarriageNames(initials3);
+    initials3_hyphen = app.getListOfHyphenatedMarriageNames(initials3);
     for initial in initials3_hyphen:
         if initial in bad:
             print "bad: " + initial + bad[initial]
     
-    initials3_married = getListOfRemovedMiddleShiftedMarriageNames(initials3);
+    initials3_married = app.getListOfRemovedMiddleShiftedMarriageNames(initials3);
     for initial in initials3_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
     
     in4 = "   Brandy      Anderson-Damon"
     print in4
-    initials4 = getInitials(in4)
+    initials4 = app.getInitials(in4)
     #print initials4
     #print getListOfConventionalMarriageNames(initials4)
     #print getListOfHyphenatedMarriageNames(initials4)
     #print getListOfRemovedMiddleShiftedMarriageNames(initials4)
     if initials4 in bad:
         print "bad: " + initials4 + bad[initials4]
-    initials4_married = getListOfConventionalMarriageNames(initials4);
+    initials4_married = app.getListOfConventionalMarriageNames(initials4);
     for initial in initials4_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
 
-    initials4_hyphen = getListOfHyphenatedMarriageNames(initials4);
+    initials4_hyphen = app.getListOfHyphenatedMarriageNames(initials4);
     for initial in initials4_hyphen:
         if initial in bad:
             print "bad: " + initial + bad[initial]
     
-    initials4_married = getListOfRemovedMiddleShiftedMarriageNames(initials4);
+    initials4_married = app.getListOfRemovedMiddleShiftedMarriageNames(initials4);
     for initial in initials4_married:
         if initial in bad:
             print "bad: " + initial + bad[initial]
     
     in5 = "Ishmael Naz"
     print in5
-    firstName, secondName, thirdName = getNames(in5)
-    print getEmailPattern2(in5)
+    firstName, secondName, thirdName = app.getNames(in5)
+    print app.getEmailPattern2(in5)
+    """
     
+    dict1 = {}
+
+    nameString = "Sylvia Elizabth Xi"
+
+    xFirstName, xSecondName, xThirdName = app.getNames(nameString) 
+    initials = app.getInitials(xFirstName, xSecondName, xThirdName)
+
+    initials_married1 = app.getListOfRemovedMiddleShiftedMarriageNames(initials)
+
+    # Parse the input string and return the two or three names (Second name could be 'None;)
+    initials_hyphen = app.getListOfHyphenatedMarriageNames(initials)
+    initials_married = app.getListOfConventionalMarriageNames(initials)
+
+    if initials_married1 != None:
+        for initial in initials_married1:
+            if initial in bad:
+                dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.']
+    for initial in initials_hyphen:
+        if initial in bad:
+            dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.']    
+    for initial in initials_married:
+        if initial in bad:
+            dict1[initial]=[bad[initial],'If he/she marries and takes new surname.']
+    # Always show the given initials        
+    if initials in bad:
+        dict1[initials]=[bad[initials],'These are the given initials.']
+    else:
+        dict1[initials]=['','These are the given initials.']
+    # Show the given first and last initials if three names were given
+    temp = app.getInitials2(initials)
+    if temp != None:
+        if temp in bad:
+            dict1[temp]=[bad[temp],'These are the given initials.']
+        else:
+            dict1[temp]=['','These are the given initials.']
+    # Show the given monogram if a valid one is returned (need three initials)
+    temp = app.getMonogram(initials)
+    if temp != None:
+        if temp in bad:
+            dict1[temp]=[bad[temp],'This is the monogram for the given name.']
+        else:
+            dict1[temp]=['','This is the monogram for the given name']
+    dict1[app.getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.']
+    # Always show 2 to 4 possible email addresses
+    dict1[app.getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']    
+    dict1[app.getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']    
+    temp = app.getEmailPattern3(xFirstName, xSecondName, xThirdName, initials)
+    if temp != "":
+        dict1[temp]=['','This could be a default email address.']    
+    temp = app.getEmailPattern4(xFirstName, xSecondName, xThirdName, initials)
+    if temp != "":
+        dict1[temp]=['','This could be a default email address.']
+    dict1[app.getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+    dict1[app.getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+    dict1[app.getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+
+    print dict1    
