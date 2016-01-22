@@ -11,6 +11,10 @@ import re
 from string import ascii_uppercase
 import names
 
+const_GIVEN = 0
+const_EMAIL = 1
+const_MARRIED = 2
+
 bad = names.badNames()
 
 urls = (
@@ -187,58 +191,59 @@ class Index(object):
         if initials_married1 != None:
             for initial in initials_married1:
                 if initial in bad:
-                    dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.']
+                    dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.',const_MARRIED]
 
         for initial in initials_hyphen:
             if initial in bad:
-                dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.']
+                dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.',const_MARRIED]
         
         for initial in initials_married:
             if initial in bad:
-                dict1[initial]=[bad[initial],'If he/she marries and takes new surname.']
+                dict1[initial]=[bad[initial],'If he/she marries and takes new surname.',const_MARRIED]
 
         # Always show the given initials        
         if initials in bad:
-            dict1[initials]=[bad[initials],'These are the given initials.']
+            dict1[initials]=[bad[initials],'These are the given initials.',const_GIVEN]
+
         else:
-            dict1[initials]=['','These are the given initials.']
+            dict1[initials]=['','These are the given initials.',const_GIVEN]
 
         # Show the given first and last initials if three names were given
         temp = getInitials2(initials)
         if temp != None:
             if temp in bad:
-                dict1[temp]=[bad[temp],'These are the given initials.']
+                dict1[temp]=[bad[temp],'These are the given initials.',const_GIVEN]
             else:
-                dict1[temp]=['','These are the given initials.']
+                dict1[temp]=['','These are the given initials.',const_GIVEN]
 
         # Show the given monogram if a valid one is returned (need three initials)
         temp = getMonogram(initials)
         if temp != None:
             if temp in bad:
-                dict1[temp]=[bad[temp],'This is the monogram for the given name.']
+                dict1[temp]=[bad[temp],'This is the monogram for the given name.',const_GIVEN]
             else:
-                dict1[temp]=['','This is the monogram for the given name']
+                dict1[temp]=['','This is the monogram for the given name',const_GIVEN]
 
-        dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.']
+        dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.',const_GIVEN]
 
         # Always show 2 to 4 possible email addresses
-        dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+        dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
         
-        dict1[getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+        dict1[getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
         
         temp = getEmailPattern3(xFirstName, xSecondName, xThirdName, initials)
         if temp != "":
-            dict1[temp]=['','This could be a default email address.']
+            dict1[temp]=['','This could be a default email address.',const_EMAIL]
         
         temp = getEmailPattern4(xFirstName, xSecondName, xThirdName, initials)
         if temp != "":
-            dict1[temp]=['','This could be a default email address.']
+            dict1[temp]=['','This could be a default email address.',const_EMAIL]
 
-        dict1[getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+        dict1[getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
 
-        dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+        dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
 
-        dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.']
+        dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
 
         return render.index(namevalue = nameString, dict = dict1)
 
