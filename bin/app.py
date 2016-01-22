@@ -30,6 +30,7 @@ def getNames (x):
 
     # Remove leading whitespace
     p = re.compile('^[^a-zA-Z]*')
+    # Replace leading non-letters with nothing 
     xNoLeadingWhitespace = p.sub('', x)
         
     # Replace hyphens with spaces
@@ -38,6 +39,7 @@ def getNames (x):
     
     # Remove non alphabetic characters
     p3 = re.compile('[^a-zA-Z ]*')
+    # Replace non-(letters or spaces) with nothing
     xAlphabetic = p3.sub('', xNoHyphen)
     #print "Output: " + xAlphabetic
 
@@ -50,14 +52,14 @@ def getNames (x):
         # Create Regular Expression to look for a two-name pattern
         p4 = re.compile(r'(?P<firstName>\b\w+\b)\s+(?P<thirdName>\b\w+\b)')
         m = p4.search(xAlphabetic)
-        # set second name
+        # set second name to None
         xSecondName = None
     else:
         # Get second name
         xSecondName = m.group('secondName')    
-    # Get first name
+    # Get first name - i.e. Joe
     xFirstName =  m.group('firstName')
-    # Get third name
+    # Get third (last/surname/family) name - i.e. Smith
     xThirdName = m.group('thirdName')
 
     return xFirstName, xSecondName, xThirdName
@@ -65,9 +67,9 @@ def getNames (x):
 def getInitials (xFirstName, xSecondName, xThirdName):
     # Get first initial
     xFirstInitial = getInitialFromName(xFirstName)
-    # Get second initial
+    # Get second initial, returns empty string if None
     xSecondInitial = getInitialFromName(xSecondName)
-    # Get third initial
+    # Get third initial, returns empty string if None
     xThirdInitial = getInitialFromName(xThirdName)
 
     # Combine initlals
