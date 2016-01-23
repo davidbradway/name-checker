@@ -6,5 +6,5 @@ then
     echo "Still running"
 else
     echo "FAILED, restarting"
-    authbind --deep python bin/app.py 80 > log.txt 2>&1 &
+    authbind --deep /opt/bitnami/python/bin/python bin/app.py 80 > /home/bitnami/log.txt 2>&1 &
 fi
