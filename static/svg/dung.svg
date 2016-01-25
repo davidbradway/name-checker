@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="330.95346"
+   height="52.480007"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="dung.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path3804"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3786"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="-100.19036"
+     inkscape:cy="-58.819436"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="847"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-225.68776,-421.06274)">
+    <text
+       xml:space="preserve"
+       style="font-size:19.47270966px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="227.29759"
+       y="460.24173"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="227.29759"
+         y="460.24173">Deborah Ung → dung@company.com</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:0;stroke:#009700;stroke-width:4.10831356;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2989"
+       sodipodi:cx="67.680222"
+       sodipodi:cy="457.88742"
+       sodipodi:rx="14.142136"
+       sodipodi:ry="28.284271"
+       d="m 81.822357,457.88742 c 0,15.62097 -6.33165,28.28427 -14.142135,28.28427 -7.810486,0 -14.142136,-12.6633 -14.142136,-28.28427 0,-15.62097 6.33165,-28.28427 14.142136,-28.28427 7.810485,0 14.142135,12.6633 14.142135,28.28427 z"
+       transform="matrix(0.48681775,0,0,0.48681775,200.62447,231.43989)" />
+    <path
+       transform="matrix(1.5653629,0,0,0.48681775,219.28226,231.43989)"
+       d="m 81.822357,457.88742 c 0,15.62097 -6.33165,28.28427 -14.142135,28.28427 -7.810486,0 -14.142136,-12.6633 -14.142136,-28.28427 0,-15.62097 6.33165,-28.28427 14.142136,-28.28427 7.810485,0 14.142135,12.6633 14.142135,28.28427 z"
+       sodipodi:ry="28.284271"
+       sodipodi:rx="14.142136"
+       sodipodi:cy="457.88742"
+       sodipodi:cx="67.680222"
+       id="use2991"
+       style="fill:#000000;fill-opacity:0;stroke:#009700;stroke-width:2.29107499;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path2989"
+       id="use2997"
+       transform="matrix(0.86657727,0,0,1.1728815,176.63224,-78.548296)"
+       width="744.09448"
+       height="1052.3622"
+       style="stroke:#009700;stroke-width:2.05415678;stroke-opacity:1" />
+    <path
+       transform="matrix(1.2170444,0,0,0.6432949,318.22932,159.79098)"
+       d="m 81.822357,457.88742 c 0,15.62097 -6.33165,28.28427 -14.142135,28.28427 -7.810486,0 -14.142136,-12.6633 -14.142136,-28.28427 0,-15.62097 6.33165,-28.28427 14.142136,-28.28427 7.810485,0 14.142135,12.6633 14.142135,28.28427 z"
+       sodipodi:ry="28.284271"
+       sodipodi:rx="14.142136"
+       sodipodi:cy="457.88742"
+       sodipodi:cx="67.680222"
+       id="use3001"
+       style="fill:#000000;fill-opacity:0;stroke:#009700;stroke-width:2.26032925;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc" />
+    <path
+       style="fill:none;stroke:#009700;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m 233.90441,440.32743 c 44.20389,-14.7374 90.16125,-19.44892 140.42869,0.48355"
+       id="path3005"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="use3007"
+       d="m 332.04679,440.27355 c 17.35954,-16.31112 36.55812,-22.56776 60.27712,-4.11003"
+       style="fill:none;stroke:#009700;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)" />
+  </g>
+</svg>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="296.01114"
+   height="54.575512"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="bad.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path3804"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3786"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="144.95204"
+     inkscape:cy="-18.765687"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="847"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-211.60875,-411.90348)">
+    <text
+       xml:space="preserve"
+       style="font-size:19.17997742px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="213.20941"
+       y="457.7222"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="213.20941"
+         y="457.7222">Benjamin Alexander Davis → BAD</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:0;stroke:#0000ff;stroke-width:3.12826228;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2989"
+       sodipodi:cx="67.680222"
+       sodipodi:cy="457.88742"
+       sodipodi:rx="14.142136"
+       sodipodi:ry="28.284271"
+       d="m 81.822357,457.88742 a 14.142136,28.284271 0 1 1 -28.284271,0 14.142136,28.284271 0 1 1 28.284271,0 z"
+       transform="matrix(0.47949944,0,0,0.47949944,186.93727,232.35994)" />
+    <use
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="0"
+       y="0"
+       xlink:href="#path2989"
+       id="use2991"
+       transform="translate(84.522138,0)"
+       width="744.09448"
+       height="1052.3622" />
+    <use
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="0"
+       y="0"
+       xlink:href="#path2989"
+       id="use2995"
+       transform="translate(176.55198,0)"
+       width="744.09448"
+       height="1052.3622" />
+    <use
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="0"
+       y="0"
+       xlink:href="#path2989"
+       id="use2997"
+       transform="translate(253.56643,0)"
+       width="744.09448"
+       height="1052.3622" />
+    <use
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="0"
+       y="0"
+       xlink:href="#use2997"
+       id="use2999"
+       transform="translate(26.882402,2.3975019e-8)"
+       width="744.09448"
+       height="1052.3622" />
+    <use
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="0"
+       y="0"
+       xlink:href="#use2999"
+       id="use3001"
+       transform="translate(-13.320107,0)"
+       width="744.09448"
+       height="1052.3622" />
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m 219.00262,438.15361 c 78.2219,-22.78844 159.54668,-30.07388 248.49846,0.7477"
+       id="path3005"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="use3007"
+       d="m 303.56282,437.75609 c 56.82801,-28.8855 115.91026,-38.12018 180.53351,0.94776"
+       style="fill:none;stroke:#0000ff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="use3009"
+       d="m 396.69327,437.71695 c 31.92587,-26.48347 65.11815,-34.95019 101.42336,0.86896"
+       style="fill:none;stroke:#0000ff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)" />
+  </g>
+</svg>
