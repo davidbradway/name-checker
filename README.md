@@ -12,7 +12,7 @@ or if that name could become a problem upon a marriage name change.
 
 In the installer script, change "bitnami" to your user account and decide if you want to use authbind.
 
-The nun the install script:
+Then run the install script:
     
     sh install.sh
 
@@ -26,6 +26,12 @@ The nun the install script:
 Omit authbind and call Python as below:
 
     python bin/app.py > log.txt 2>&1 &
+
+Go to the appropriate webpage depending on the port you selected:
+
+- http://localhost:8080
+
+- http://localhost:80
 
 ## Reference
 
