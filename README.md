@@ -3,8 +3,11 @@
 This is a tool to identify if an entered name has any bad initials or email patterns
 or if that name could become a problem upon a marriage name change.
 
-#### Get name-checker
+## Get name-checker
 
+Download a snapshot: `https://gitlab.oit.duke.edu/dpb6/name-checker/repository/archive.zip`
+
+Or:
     git clone git@gitlab.oit.duke.edu:dpb6/name-checker.git
     cd name-checker/
 
