@@ -143,6 +143,10 @@ def getNamePattern1 (firstName, thirdName):
     # Show Last name, First name
     return thirdName+", "+firstName
 
+def getNamePattern2 (firstName, initials):
+    # Show First name Last initial
+    return firstName+" "+initials[-1:]+"."
+
 def getEmailPattern1 (firstName, secondName, thirdName, initials):
     return initials[0:1].lower()+thirdName.lower()+"@company.com"
 
@@ -227,6 +231,8 @@ class Index(object):
                 dict1[temp]=['','This is the monogram for the given name',const_GIVEN]
 
         dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.',const_GIVEN]
+
+        dict1[getNamePattern2(xFirstName, initials)]=['','Given first name and last initial.',const_GIVEN]
 
         # Always show 2 to 4 possible email addresses
         dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
