@@ -8,6 +8,7 @@ or if that name could become a problem upon a marriage name change.
 Download a snapshot: `https://gitlab.oit.duke.edu/dpb6/name-checker/repository/archive.zip`
 
 Or:
+
     git clone git@gitlab.oit.duke.edu:dpb6/name-checker.git
     cd name-checker/
 
