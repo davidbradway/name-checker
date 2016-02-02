@@ -5,7 +5,7 @@ or if that name could become a problem upon a marriage name change.
 
 ## Get name-checker
 
-Download a snapshot: `https://gitlab.oit.duke.edu/dpb6/name-checker/repository/archive.zip`
+Download a snapshot: https://gitlab.oit.duke.edu/dpb6/name-checker/repository/archive.zip
 
 Or:
 
@@ -25,17 +25,14 @@ Then run the install script:
 
     authbind --deep python bin/app.py 80 > log.txt 2>&1 & 
 
-### Or debug server on port 8080
-
-Omit authbind and call Python as below:
+### Or omit authbind and run debug server on port 8080
 
     python bin/app.py > log.txt 2>&1 &
 
-Go to the appropriate webpage depending on the port you selected:
-
-- http://localhost:8080
+### Go to the appropriate webpage depending on the port you selected:
 
 - http://localhost:80
+- http://localhost:8080
 
 ## Reference
 
