@@ -109,11 +109,6 @@ def getListOfHyphenatedMarriageNames (initials):
     for c in ascii_uppercase:
         # Append new married name initial to existing initials
         nameList.append(initials + c)
-    # This is actually redundant with the Conventional Marriage case above. should delete.
-    if len(initials) == 3:
-        for c in ascii_uppercase:
-            # Replace old last name initial  with the new married name initial 
-            nameList.append(initials[0] + c)
     return nameList
     
 def getListOfRemovedMiddleShiftedMarriageNames (initials):
