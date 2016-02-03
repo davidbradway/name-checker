@@ -174,6 +174,9 @@ def getEmailPattern6 (firstName, secondName, thirdName, initials):
 def getEmailPattern7 (firstName, secondName, thirdName, initials):
     return thirdName.lower()+firstName[0:2].lower()+"@company.com"
 
+def getEmailPattern8 (firstName, secondName, thirdName, initials):
+    return firstName[0].lower()+thirdName[0:3].lower()+"@company.com"
+
 class Index(object):
     def GET(self):
         return render.index(namevalue = '', dict ='')
@@ -252,6 +255,8 @@ class Index(object):
         dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
 
         dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
+
+        dict1[getEmailPattern8(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
 
         return render.index(namevalue = nameString, dict = dict1)
 
