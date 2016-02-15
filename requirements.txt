@@ -1,0 +1,32 @@
+# ----------------------
+# Flask
+# ----------------------
+flask
+Flask-WTF
+Jinja2
+MarkupSafe
+Tempita
+WTForms
+Werkzeug
+decorator
+flipflop
+itsdangerous
+pbr
+pytz
+six
+speaklater
+
+
+# ----------------------
+# Testing
+# ----------------------
+mock
+
+
+# ----------------------
+# Production Server
+# ----------------------
+gevent
+gunicorn
+
+

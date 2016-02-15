@@ -1,0 +1,70 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+    {% include 'flash.html' %}
+    <div class="starter-template">
+        <h1>Unintended Consequences Baby Name Checker</h1>
+        <p class="lead">Enter a full name below to see problematic possible initials and email addresses.</p>
+        <form class="form-signin"  action="{{url_for('search')}}" method="post" name="search">
+            {{g.search_form.hidden_tag()}}
+            <label for="inputName" class="sr-only">Name</label>
+            {{g.search_form.search(size=20,placeholder='Name',class="form-control")}}
+            <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button> -->
+        </form>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="hidden-xs- col-md-3"></div>
+                    <div class="col-xs-6 col-md-3"><img src="/static/images/girls-names-word-cloud.jpg" width=92% /></div>
+                    <div class="col-xs-6 col-md-3"><img src="/static/images/boys-names-word-cloud.jpg" width=100% /></div>
+                    <div class="hidden-xs- col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>      
+
+    <!-- Given Name Section -->
+    <section id="givenname" class="givenname-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Given Name</h2>
+                </div>
+            </div>
+            <div class="hidden-xs- col-md-3"></div>
+            <div class="col-xs-12 col-md-6"><img src="/static/svg/bad.svg" width=100% /></div>
+            <div class="hidden-xs- col-md-3"></div>
+        </div>
+    </section>
+    <!-- Email Section -->
+    <section id="email" class="email-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Email</h2>
+                </div>
+            </div>
+            <div class="hidden-xs- col-md-3"></div>
+            <div class="col-xs-12 col-md-6"><img src="/static/svg/dung.svg" width=100% /></div>
+            <div class="hidden-xs- col-md-3"></div>
+        </div>
+    </section>
+    <!-- Married Name Section -->
+    <section id="marriedname" class="marriedname-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Married Names</h2>
+                </div>
+            </div>
+            <div class="hidden-xs- col-md-3"></div>
+            <div class="col-xs-12 col-md-6"><img src="/static/svg/ass.svg" width=100% /></div>
+            <div class="hidden-xs- col-md-3"></div>
+        </div>
+    </section>
+{% endblock %}
