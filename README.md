@@ -14,25 +14,31 @@ Or:
 
 ## Setup
 
-In the installer script, change "bitnami" to your user account and decide if you want to use authbind.
+### Local test
 
-Then run the install script:
-    
-    sh install.sh
+```bash
+pip install virtualenv
+virtualenv flask
+.\flask\Scripts\pip install flask
+.\flask\Scripts\pip install flask-wtf
+.\flask\Scripts\python .\app.py
+```
 
-## Try it out 
-### On port 80, if you set up authbind
+#### Go to the webpage:
 
-    authbind --deep python bin/app.py 80 > log.txt 2>&1 & 
+http://localhost:5000
 
-### Or omit authbind and run debug server on port 8080
+### Deployment to Heroku
 
-    python bin/app.py > log.txt 2>&1 &
-
-### Go to the appropriate webpage depending on the port you selected:
-
-- http://localhost:80
-- http://localhost:8080
+```bash
+history | grep heroku
+heroku login
+heroku create
+#heroku create babynamechecker-flask1 -s cedar
+git push heroku master
+heroku ps:scale web=1 
+heroku ps
+```
 
 ## Reference
 
