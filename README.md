@@ -36,7 +36,7 @@ heroku login
 heroku create
 #heroku create babynamechecker-flask1 -s cedar
 git push heroku master
-heroku ps:scale web=1 
+heroku ps:scale web=1
 heroku ps
 ```
 

@@ -22,6 +22,9 @@ from wtforms.validators import DataRequired
 import names
 bad = names.badNames()
 
+import icons
+icons = icons.pngNames()
+
 const_GIVEN = 0
 const_EMAIL = 1
 const_MARRIED = 2
@@ -33,13 +36,13 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', ';l123ksdr89_(*HGJF')
 def getNames (x):
     # Remove leading whitespace
     p = re.compile('^[^a-zA-Z]*')
-    # Replace leading non-letters with nothing 
+    # Replace leading non-letters with nothing
     xNoLeadingWhitespace = p.sub('', x)
-        
+
     # Replace hyphens with spaces
     p2 = re.compile('[-]+')
     xNoHyphen = p2.sub(' ', xNoLeadingWhitespace)
-    
+
     # Remove non alphabetic characters
     p3 = re.compile('[^a-zA-Z ]*')
     # Replace non-(letters or spaces) with nothing
@@ -59,7 +62,7 @@ def getNames (x):
         xSecondName = None
     else:
         # Get second name
-        xSecondName = m.group('secondName')    
+        xSecondName = m.group('secondName')
     # Get first name - i.e. Joe
     xFirstName =  m.group('firstName')
     # Get third (last/surname/family) name - i.e. Smith
@@ -76,7 +79,7 @@ def getInitials (xFirstName, xSecondName, xThirdName):
     xThirdInitial = getInitialFromName(xThirdName)
 
     # Combine initlals
-    initials = xFirstInitial + xSecondInitial + xThirdInitial    
+    initials = xFirstInitial + xSecondInitial + xThirdInitial
     return initials
 
 def getInitials2 (initials):
@@ -92,7 +95,7 @@ def getMonogram (initials):
         return initials[0]+initials[2]+initials[1]
     else:
         return None
-        
+
 def getListOfConventionalMarriageNames (initials):
     nameList = []
     # Go through all the letters of the alphabet
@@ -105,7 +108,7 @@ def getListOfConventionalMarriageNames (initials):
             # Replace old last name initial  with the new married name initial 
             nameList.append(initials[0] + c)
     return nameList
-    
+
 def getListOfHyphenatedMarriageNames (initials):
     nameList = []
     # Go through all the letters of the alphabet
@@ -113,7 +116,7 @@ def getListOfHyphenatedMarriageNames (initials):
         # Append new married name initial to existing initials
         nameList.append(initials + c)
     return nameList
-    
+
 def getListOfRemovedMiddleShiftedMarriageNames (initials):
     nameList = []
     # this function only works with three names
@@ -126,7 +129,7 @@ def getListOfRemovedMiddleShiftedMarriageNames (initials):
         return nameList
     else:
         return None
-        
+
 def getInitialFromName (name):
     # Get initial
     if name == None:
@@ -213,7 +216,7 @@ def index(page = 1):
     return render_template('home.html',
                             namevalue = None, 
                             form=form)
-                           
+
 @app.route('/about/')
 def about():
     """Render the website's about page."""
@@ -240,68 +243,94 @@ def search_results(query):
     initials_married1 = getListOfRemovedMiddleShiftedMarriageNames(initials)
     initials_hyphen = getListOfHyphenatedMarriageNames(initials)
     initials_married = getListOfConventionalMarriageNames(initials)
-    
+
     if initials_married1 != None:
         for initial in initials_married1:
             if initial in bad:
-                dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.',const_MARRIED]
-    
+                if initial in icons:
+                    dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.',const_MARRIED,icons[initial]]
+                else:
+                    dict1[initial]=[bad[initial],'If he/she marries, drops middle name, and adds married name.',const_MARRIED,0]
+
     for initial in initials_hyphen:
         if initial in bad:
-            dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.',const_MARRIED]
-    
+            if initial in icons:
+                dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.',const_MARRIED,icons[initial]]
+            else:
+                dict1[initial]=[bad[initial],'If he/she marries and hyphenates married name.',const_MARRIED,0]
+
     for initial in initials_married:
         if initial in bad:
-            dict1[initial]=[bad[initial],'If he/she marries and takes new surname.',const_MARRIED]
+            if initial in icons:
+                dict1[initial]=[bad[initial],'If he/she marries and takes new surname.',const_MARRIED,icons[initial]]
+            else:
+                dict1[initial]=[bad[initial],'If he/she marries and takes new surname.',const_MARRIED,0]
 
-    # Always show the given initials        
+    # Always show the given initials
     if initials in bad:
-        dict1[initials]=[bad[initials],'These are the given initials.',const_GIVEN]
+        if initial in icons:
+            dict1[initials]=[bad[initials],'These are the given initials.',const_GIVEN,icons[initial]]
+        else:
+            dict1[initials]=[bad[initials],'These are the given initials.',const_GIVEN,0]
     else:
-        dict1[initials]=['','These are the given initials.',const_GIVEN]
+        if initial in icons:
+            dict1[initials]=['','These are the given initials.',const_GIVEN,icons[initial]]
+        else:
+            dict1[initials]=['','These are the given initials.',const_GIVEN,0]
 
     # Show the given first and last initials if three names were given
     temp = getInitials2(initials)
-
     if temp != None:
         if temp in bad:
-            dict1[temp]=[bad[temp],'These are the given initials.',const_GIVEN]
+            if temp in icons:
+                dict1[temp]=[bad[temp],'These are the given initials.',const_GIVEN,icons[temp]]
+            else:
+                dict1[temp]=[bad[temp],'These are the given initials.',const_GIVEN,0]
         else:
-            dict1[temp]=['','These are the given initials.',const_GIVEN]
+            if temp in icons:
+                dict1[temp]=['','These are the given initials.',const_GIVEN,icons[temp]]
+            else:
+                dict1[temp]=['','These are the given initials.',const_GIVEN,0]
 
     # Show the given monogram if a valid one is returned (need three initials)
     temp = getMonogram(initials)
     if temp != None:
         if temp in bad:
-            dict1[temp]=[bad[temp],'This is the monogram for the given name.',const_GIVEN]
+            if temp in icons:
+                dict1[temp]=[bad[temp],'This is the monogram for the given name.',const_GIVEN,icons[temp]]
+            else:
+                dict1[temp]=[bad[temp],'This is the monogram for the given name.',const_GIVEN,0]
         else:
-            dict1[temp]=['','This is the monogram for the given name',const_GIVEN]
+            if temp in icons:
+                dict1[temp]=['','This is the monogram for the given name',const_GIVEN,icons[temp]]
+            else:
+                dict1[temp]=['','This is the monogram for the given name',const_GIVEN,0]
 
-    dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.',const_GIVEN]
-    dict1[getNamePattern2(xFirstName, initials)]=['','Given first name and last initial.',const_GIVEN]
+    dict1[getNamePattern1(xFirstName, xThirdName)]=['','Given last name, first name.',const_GIVEN,0]
+    dict1[getNamePattern2(xFirstName, initials)]=['','Given first name and last initial.',const_GIVEN,0]
 
     # Always show 2 to 4 possible email addresses
-    dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
-    dict1[getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
-    
+    dict1[getEmailPattern1(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
+    dict1[getEmailPattern2(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
+
     temp = getEmailPattern3(xFirstName, xSecondName, xThirdName, initials)
     if temp != "":
-        dict1[temp]=['','This could be a default email address.',const_EMAIL]
-    
+        dict1[temp]=['','This could be a default email address.',const_EMAIL,0]
+
     temp = getEmailPattern4(xFirstName, xSecondName, xThirdName, initials)
     if temp != "":
-        dict1[temp]=['','This could be a default email address.',const_EMAIL]
+        dict1[temp]=['','This could be a default email address.',const_EMAIL,0]
 
-    dict1[getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
-    dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
-    dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
-    dict1[getEmailPattern8(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL]
+    dict1[getEmailPattern5(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
+    dict1[getEmailPattern6(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
+    dict1[getEmailPattern7(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
+    dict1[getEmailPattern8(xFirstName, xSecondName, xThirdName, initials)]=['','This could be a default email address.',const_EMAIL,0]
 
     print nameString
     print dict1
-    
+
     return render_template('search_results.html',
-                               namevalue = nameString, 
+                               namevalue = nameString,
                                dict = dict1,
                                form = g.search_form)
 
